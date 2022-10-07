@@ -29,6 +29,6 @@ const SurvivorSchema = new Schema(
     }
 );
 
-const Item = model('Item', ItemSchema);
+const Survivor = model('Survivor', SurvivorSchema);
 
-module.exports = Item;
+module.exports = Survivor;
