@@ -1,7 +1,7 @@
 const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
-const Survivor = require('./Survivor');
-const Killer = require('./Killer')
+const SurvivorBuild = require('./SurvivorBuild');
+const KillerBuild = require('./KillerBuild')
 
 const UserSchema = new Schema(
     {
@@ -16,8 +16,8 @@ const UserSchema = new Schema(
             required: true,
             minlength: 8
         },
-        survBuilds: [Survivor.schema],
-        killBuilds: [Killer.schema]
+        survBuilds: [SurvivorBuild.schema],
+        killBuilds: [KillerBuild.schema]
     },
     {
         toJSON: {

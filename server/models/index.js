@@ -1,9 +1,11 @@
 const Items = require('./Items');
-const AddOns = require('./AddOns');
+const ItemAddOns = require('./ItemAddOns');
 const Killer = require('./Killer')
+const KillerAddOns = require('./KillerAddOns');
+const KillerBuild = require('./KillerBuild');
 const KillPerks = require('./KillPerks');
-const Survivor = require('./Survivor');
-const SurvPerks = require('./SurvPerks')
+const SurvivorBuild = require('./SurvivorBuild');
+const SurvPerks = require('./SurvPerks');
 const User = require('./User');
 
-module.exports = { Items, AddOns, Killer, KillPerks, Survivor, SurvPerks, User };
+module.exports = { Items, ItemAddOns, Killer, KillerAddOns, KillerBuild, KillPerks, SurvivorBuild, SurvPerks, User };

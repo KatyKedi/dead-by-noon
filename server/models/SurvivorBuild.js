@@ -1,6 +1,6 @@
 const { Schema, model } = require('mongoose');
 
-const SurvivorSchema = new Schema(
+const SurvivorBuildSchema = new Schema(
     {
         name: {
             type: String,
@@ -18,6 +18,16 @@ const SurvivorSchema = new Schema(
                 type: Schema.Types.ObjectId,
                 ref: 'SurvPerks'
             }
+        ],
+        item: {
+            type: Schema.Types.ObjectId,
+            ref: 'Items'
+        },
+        addOns: [
+            {
+                type: Schema.Types.ObjectId,
+                ref: 'ItemAddOns'
+            }
         ]
     },
     {
@@ -29,6 +39,6 @@ const SurvivorSchema = new Schema(
     }
 );
 
-const Survivor = model('Survivor', SurvivorSchema);
+const SurvivorBuild = model('SurvivorBuild', SurvivorBuildSchema);
 
-module.exports = Survivor;
+module.exports = SurvivorBuild;

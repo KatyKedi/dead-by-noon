@@ -1,14 +1,14 @@
 const { Schema, model } = require('mongoose');
 
-const ItemsSchema = new Schema(
+const KillerAddOnsSchema = new Schema(
     {
         name: {
             type: String,
             required: true
         },
-        type: {
-            type: String,
-            required: true
+        killer: {
+            type: Schema.Types.ObjectId,
+            ref: 'Killer'
         },
         description: {
             type: String,
@@ -24,6 +24,6 @@ const ItemsSchema = new Schema(
     }
 );
 
-const Items = model('Items', ItemsSchema);
+const KillerAddOns = model('KillerAddOns', KillerAddOnsSchema);
 
-module.exports = Items;
+module.exports = KillerAddOns;

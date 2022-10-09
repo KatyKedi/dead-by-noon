@@ -1,18 +1,20 @@
 const { Schema, model } = require('mongoose');
 
-const KillerSchema = new Schema(
+const KillerBuildSchema = new Schema(
     {
         name: {
             type: String,
             required: true
         },
         description: {
-            type: String,
-            required: true
+            type: String
         },
-        speed: {
-            type: Float
-        },
+        killPerks: [
+            {
+                type: Schema.Types.ObjectId,
+                ref: 'KillPerks'
+            }
+        ],
         addOns: [
             {
                 type: Schema.Types.ObjectId,
@@ -29,6 +31,6 @@ const KillerSchema = new Schema(
     }
 );
 
-const Killer = model('Killer', KillerSchema);
+const KillerBuild = model('KillerBuild', KillerBuildSchema);
 
-module.exports = Killer;
+module.exports = KillerBuild;

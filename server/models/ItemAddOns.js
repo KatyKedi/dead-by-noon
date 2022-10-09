@@ -1,14 +1,14 @@
 const { Schema, model } = require('mongoose');
 
-const ItemsSchema = new Schema(
+const ItemAddOnsSchema = new Schema(
     {
         name: {
             type: String,
             required: true
         },
-        type: {
-            type: String,
-            required: true
+        item: {
+            type: Schema.Types.ObjectId,
+            ref: 'Items'
         },
         description: {
             type: String,
@@ -24,6 +24,6 @@ const ItemsSchema = new Schema(
     }
 );
 
-const Items = model('Items', ItemsSchema);
+const ItemAddOns = model('ItemAddOns', ItemAddOnsSchema);
 
-module.exports = Items;
+module.exports = ItemAddOns;
