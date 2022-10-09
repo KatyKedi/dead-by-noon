@@ -1,8 +1,9 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { User, ItemAddOn, Item, Killer, KillerAddOn, KillerBuild, KillPerk, SurvivorBuild, SurvPerk } = require('../models');
+const { User, ItemAddOn, Item, Killer, KillerAddOn, KillerBuild, KillPerk, SurvivorBuild, SurvPerk, Survivor } = require('../models');
 const { signToken } = require('../utils/auth');
 const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
-const uuid = require("uuid")
+const uuid = require("uuid");
+const { findById } = require('../models/SurvivorBuild');
 
 const resolvers = {
   Query: {
@@ -18,42 +19,53 @@ const resolvers = {
       }
       throw new AuthenticationError('Not logged in');
     },
-    sections: async (parent, args, context) => {
-      if (context.user) {
-        const user = await User
-          .findById(context.user._id)
-          .populate('sections');
-
-        return user.sections;
-      }
-      throw new AuthenticationError('Not logged in');
+    survBuilds: async (parent, args, context) => {
+      return await SurvivorBuild.find()
     },
-    section: async (parent, { _id }, context) => {
-      if (context.user) {
-        const section = await Section
-          .findById(_id)
-          .populate('items');
-        
-        return section;
-      }
-      throw new AuthenticationError('Not logged in');
+    survBuild: async (parent, { _id }, context) => {
+      return await SurvivorBuild.findById(_id)
+    },
+    survivors: async (parent, args, context) => {
+      return await Survivor.find()
+    },
+    survivor: async (parent, { _id }, context) => {
+      return await Survivor.findById(_id)
     },
     items: async (parent, args, context) => {
-      if (context.user) {
-        const user = await User
-          .findById(context.user._id)
-          .populate('items');
-
-        return user.items;
-      }
-      throw new AuthenticationError('Not logged in');
+      return await Item.find();
     },
     item: async (parent, { _id }, context) => {
-      if (context.user) {
-        return await Item
-          .findById(_id)
-      }
-      throw new AuthenticationError('Not logged in');
+      return await Item,findById(_id)
+    },
+    itemAddOns: async (parent, args, context) => {
+      return await ItemAddOn.find()
+    },
+    ItemAddOn: async (parent, { _id }, context) => {
+      return await ItemAddOn.findById(_id)
+    },
+    killBuilds: async (parent, args, context) => {
+      return await KillerBuild.find()
+    },
+    killBuild: async (parent, args, context) => {
+      return await KillerBuild.findById(_id)
+    },
+    killers: async (parent, args, context) => {
+      return await Killer.find()
+    },
+    killer: async (parent, { _id }, context) => {
+      return await Killer.findById(_id)
+    },
+    killPerks: async (parent, { _id }, context) => {
+      return await KillPerk.find()
+    },
+    killPerk: async (parent, { _id }, context) => {
+      return await KillPerk.findById(_id)
+    },
+    killAddOns: async (parent, args, context) => {
+      return await KillerAddOn.find()
+    },
+    killAddOn: async (parent, { _id }, context) => {
+      return await KillerAddOn.findById(_id)
     },
     checkout: async (parent, { donation, token }, context) => {
       const url = new URL(context.headers.referer).origin
@@ -102,23 +114,23 @@ const resolvers = {
 
       return { token, user };
     },
-    addSection: async (parent, args, context) => {
+    addSurvBuild: async (parent, args, context) => {
       if (context.user) {
-        const section = await Section.create({ ...args });
+        const build = await SurvivorBuild.create({ ...args });
 
         await User.findByIdAndUpdate(
           { _id: context.user._id },
-          { $addToSet: { sections: section } },
+          { $addToSet: { survBuilds: build } },
           { new: true }
         );
 
-        return section;
+        return build;
       }
       throw new AuthenticationError('Not logged in');
     },
-    editSection: async (parent, args, context) => {
+    editSurvBuild: async (parent, args, context) => {
       if (context.user) {
-        return Section.findByIdAndUpdate(
+        return SurvivorBuild.findByIdAndUpdate(
           { _id: args._id },
           args,
           { new: true }
@@ -126,29 +138,29 @@ const resolvers = {
       }
       throw new AuthenticationError('Not logged in');
     },
-    deleteSection: async (parent, args, context) => {
+    deleteSurvBuild: async (parent, { _id }, context) => {
       if (context.user) {
-        return Section.deleteOne({ _id: args._id });
+        return SurvivorBuild.deleteOne({ _id: _id });
       }
       throw new AuthenticationError('Not logged in');
     },
-    addItem: async (parent, args, context) => {
+    addKillBuild: async (parent, args, context) => {
       if (context.user) {
-        const item = await Item.create({ ...args});
+        const build = await KillerBuild.create({ ...args});
 
         await User.findByIdAndUpdate(
           { _id: context.user._id },
-          { $addToSet: { items: item } },
+          { $addToSet: { killBuilds: build } },
           { new: true }
         );
 
-        return item;
+        return build;
       }
       throw new AuthenticationError('Not logged in');
     },
-    editItem: async (parent, args, context) => {
+    editKillBuild: async (parent, args, context) => {
       if (context.user) {
-        return await Item.findByIdAndUpdate(
+        return await KillerBuild.findByIdAndUpdate(
           { _id: args._id },
           args,
           { new: true }
@@ -156,13 +168,9 @@ const resolvers = {
       }
       throw new AuthenticationError('Not logged in');
     },
-    deleteItem: async (parent, args, context) => {
-      await Item.findOneAndDelete({ _id: args._id })
+    deleteKillBuild: async (parent, { _id }, context) => {
       if (context.user) {
-        await User.findByIdAndUpdate(
-          { _id: context.user._id },
-          { $pull: { items: args._id } }
-        )}
+        return await KillerBuild.deleteOne({ _id: _id })}
       throw new AuthenticationError('Not logged in');
     },
   }

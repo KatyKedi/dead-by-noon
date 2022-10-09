@@ -61,7 +61,7 @@ const typeDefs = gql`
     _id: ID
     name: String
     description: String
-    perks: [Perk]
+    perks: [KillPerk]
     addOns: [KillerAddOn]
     baseSpeed: Float
     img: String
@@ -98,16 +98,23 @@ const typeDefs = gql`
   type Query {
     me: User
     survBuilds: [SurvivorBuild]
+    survBuild(_id: ID!): SurvivorBuild
     survivors: [Survivor]
     survivor(_id: ID!): Survivor
     survPerks: [SurvPerk]
+    survPerk(_id: ID!): SurvPerk
     items: [Item]
+    item(_id: ID!): Item
     itemAddOns: [ItemAddOn]
+    itemAddOn: Item
     killBuilds: [KillerBuild]
+    killBuild(_id: ID!): KillerBuild
     killers: [Killer]
     killer(_id: ID!): Killer
     killPerks: [KillPerk]
-    killAddOns: [KillerAddOns]
+    killPerk(_id: ID!): KillPerk
+    killAddOns: [KillerAddOn]
+    killAddOn(_id: ID!): KillerAddOn
     checkout(name: String!, price: Int!): Checkout
   }
 
