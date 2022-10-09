@@ -10,13 +10,22 @@ const KillerSchema = new Schema(
             type: String,
             required: true
         },
-        speed: {
+        img: {
+            type: String
+        },
+        baseSpeed: {
             type: Float
         },
+        perks: [
+            {
+                type: Schema.Types.ObjectId,
+                ref: 'KillPerk'
+            }
+        ],
         addOns: [
             {
                 type: Schema.Types.ObjectId,
-                ref: 'KillerAddOns'
+                ref: 'KillerAddOn'
             }
         ]
     },

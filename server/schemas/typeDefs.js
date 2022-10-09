@@ -4,37 +4,91 @@ const typeDefs = gql`
   type User {
     _id: ID
     email: String
-    sections: [Section]
-    items: [Item]
-    itemCount: Int
+    survBuilds: [SurvivorBuild]
+    killBuilds: [KillerBuild]
   }
 
-  input ItemInput {
+  type Auth {
+    token: ID!
+    user: User
+  }
+
+  type Survivor {
+    _id: ID
+    name: String
     description: String
-    weight: Float
-    size: String
+    perks: [SurvPerk]
+    img: String
+  }
+
+  type SurvivorBuild {
+    _id: ID
+    name: String
+    description: String
+    createdAt: String
+    perks: [SurvPerk]
+    item: Item
+    addOns : [ItemAddOn]
+  }
+
+  type SurvPerk {
+    _id: ID
+    name: String
+    description: String
+    img: String
+    survivor: Survivor
   }
 
   type Item {
     _id: ID
     name: String
     description: String
-    createdAt: String
-    weight: Float
-    size: String
-    section: String
+    type: String
+    tier: String
+    img: String
   }
 
-  type Section {
+  type ItemAddOn {
     _id: ID
     name: String
-    full: Boolean
-    items: [Item]
+    description: String
+    item: Item
+    tier: String
+    img: String
   }
 
-  type Auth {
-    token: ID!
-    user: User
+  type Killer {
+    _id: ID
+    name: String
+    description: String
+    perks: [Perk]
+    addOns: [KillerAddOn]
+    baseSpeed: Float
+    img: String
+  }
+
+  type KillerBuild {
+    _id: ID
+    name: String
+    description: String
+    killer: Killer
+    perks: [Perk]
+    addOns: [KillerAddOn]
+  }
+
+  type KillPerk {
+    _id: ID
+    name: String
+    description: String
+    img: String
+  }
+
+  type KillerAddOn {
+    _id: ID
+    name: String
+    description: String
+    img: String
+    killer: Killer
   }
 
   type Checkout {
@@ -43,10 +97,17 @@ const typeDefs = gql`
 
   type Query {
     me: User
-    sections: [Section]
-    section(_id: ID!): Section
+    survBuilds: [SurvivorBuild]
+    survivors: [Survivor]
+    survivor(_id: ID!): Survivor
+    survPerks: [SurvPerk]
     items: [Item]
-    item(_id: ID!): Item
+    itemAddOns: [ItemAddOn]
+    killBuilds: [KillerBuild]
+    killers: [Killer]
+    killer(_id: ID!): Killer
+    killPerks: [KillPerk]
+    killAddOns: [KillerAddOns]
     checkout(name: String!, price: Int!): Checkout
   }
 
@@ -54,12 +115,12 @@ const typeDefs = gql`
     login(email: String!, password: String!): Auth
     logout: User
     addUser(email: String!, password: String!): Auth
-    addSection(name: String!, full: Boolean): Section
-    editSection(_id: ID!, name: String!, full: Boolean): Section
-    deleteSection(_id: ID!): Section
-    addItem(name: String!, section: String!, description: String, size: String, weight: Float): Item
-    editItem(_id: ID!, name: String!, section: String!, description: String, size: String, weight: Float): Item
-    deleteItem(_id: ID!): Item
+    addSurvBuild(name: String!, description: String!, perks: String, item: String, addOns: String): SurvivorBuild
+    editSurvBuild(_id: ID!, name: String, description: String, perks: String, item: String, addOns: String): SurvivorBuild
+    deletesurvBuild(_id: ID!): SurvivorBuild
+    addKillBuild(name: String!, description: String!, killer: String!, perks: String, addOns: String): KillerBuild
+    editKillBuild(_id: ID!, name: String, description: String, killer: String, perks: String, addOns: String): Item
+    deleteKillBuild(_id: ID!): KillerBuild
   }
 `;
 

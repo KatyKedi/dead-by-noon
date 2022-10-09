@@ -9,10 +9,14 @@ const KillerBuildSchema = new Schema(
         description: {
             type: String
         },
-        killPerks: [
+        killer: {
+            type: Schema.Types.ObjectId,
+            ref: 'Killer'
+        },
+        perks: [
             {
                 type: Schema.Types.ObjectId,
-                ref: 'KillPerks'
+                ref: 'KillPerk'
             }
         ],
         addOns: [

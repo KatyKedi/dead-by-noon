@@ -1,12 +1,8 @@
 const { Schema, model } = require('mongoose');
 
-const ItemsSchema = new Schema(
+const SurvivorSchema = new Schema(
     {
         name: {
-            type: String,
-            required: true
-        },
-        type: {
             type: String,
             required: true
         },
@@ -14,6 +10,15 @@ const ItemsSchema = new Schema(
             type: String,
             required: true
         },
+        img: {
+            type: String
+        },
+        perks: [
+            {
+                type: Schema.Types.ObjectId,
+                ref: 'SurvPerk'
+            }
+        ]
     },
     {
         toJSON: {
@@ -24,6 +29,6 @@ const ItemsSchema = new Schema(
     }
 );
 
-const Items = model('Items', ItemsSchema);
+const Survivor = model('Survivor', SurvivorSchema);
 
-module.exports = Items;
+module.exports = Survivor;

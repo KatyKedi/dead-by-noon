@@ -1,5 +1,5 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { User, Section, Item } = require('../models');
+const { User, ItemAddOn, Item, Killer, KillerAddOn, KillerBuild, KillPerk, SurvivorBuild, SurvPerk } = require('../models');
 const { signToken } = require('../utils/auth');
 const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
 const uuid = require("uuid")
@@ -11,8 +11,8 @@ const resolvers = {
         const userData = await User
           .findOne({ _id: context.user._id })
           .select('-__v -password')
-          .populate('sections')
-          .populate('items');
+          .populate('survBuilds')
+          .populate('killBuilds');
 
         return userData;
       }

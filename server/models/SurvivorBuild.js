@@ -13,20 +13,20 @@ const SurvivorBuildSchema = new Schema(
             type: Date,
             default: Date.now
         },
-        survPerks: [
+        perks: [
             {
                 type: Schema.Types.ObjectId,
-                ref: 'SurvPerks'
+                ref: 'SurvPerk'
             }
         ],
         item: {
             type: Schema.Types.ObjectId,
-            ref: 'Items'
+            ref: 'Item'
         },
         addOns: [
             {
                 type: Schema.Types.ObjectId,
-                ref: 'ItemAddOns'
+                ref: 'ItemAddOn'
             }
         ]
     },
