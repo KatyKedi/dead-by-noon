@@ -89,6 +89,7 @@ const typeDefs = gql`
     description: String
     img: String
     killer: Killer
+    tier: String
   }
 
   type Checkout {
@@ -124,7 +125,7 @@ const typeDefs = gql`
     addUser(email: String!, password: String!): Auth
     addSurvBuild(name: String!, description: String!, perks: String, item: String, addOns: String): SurvivorBuild
     editSurvBuild(_id: ID!, name: String, description: String, perks: String, item: String, addOns: String): SurvivorBuild
-    deletesurvBuild(_id: ID!): SurvivorBuild
+    deleteSurvBuild(_id: ID!): SurvivorBuild
     addKillBuild(name: String!, description: String!, killer: String!, perks: String, addOns: String): KillerBuild
     editKillBuild(_id: ID!, name: String, description: String, killer: String, perks: String, addOns: String): Item
     deleteKillBuild(_id: ID!): KillerBuild

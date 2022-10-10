@@ -1,11 +1,60 @@
 const db = require('./connection');
-const { User, KillPerks } = require('../models');
+const { User, Item, ItemAddOn, Killer, KillerAddOn, KillerBuild, KillPerk, Survivor, SurvivorBuild, SurvPerk } = require('../models');
 
 db.once('open', async () => {
-    await KillPerks.deleteMany();
+    await Item.deleteMany();
 
-    await KillPerks.create({
-        name: ''
+    await Item.create({
+
+    })
+    
+    await ItemAddOn.deleteMany();
+
+    await ItemAddOn.create({
+
+    })
+
+    await Killer.deleteMany();
+
+    await Killer.create({
+
+    })
+
+    await KillerAddOn.deleteMany();
+
+    await KillerAddOn.create({
+
+    })
+
+    await KillerBuild.deleteMany();
+
+    await KillerBuild.create({
+
+    })
+    
+    
+    await KillPerk.deleteMany();
+
+    await KillPerk.create({
+
+    })
+
+    await Survivor.deleteMany();
+
+    await Survivor.create({
+
+    })
+
+    await SurvivorBuild.deleteMany();
+
+    await SurvivorBuild.create({
+
+    })
+
+    await SurvPerk.deleteMany();
+
+    await SurvPerk.create({
+
     })
 
     await User.deleteMany();
@@ -17,7 +66,7 @@ db.once('open', async () => {
         killBuilds: killBuilds
     });
 
-    console.log('users seeded');
+    console.log('seeded');
 
     process.exit();
 });
