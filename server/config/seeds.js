@@ -7,12 +7,16 @@ db.once('open', async () => {
     await Item.create({
 
     })
+
+    console.log('Items seeded');
     
     await ItemAddOn.deleteMany();
 
-    await ItemAddOn.create({
+    await ItemAddOn.bulkCreate({
 
     })
+
+    console.log('Item add-ons seeded');
 
     await Killer.deleteMany();
 
@@ -20,42 +24,55 @@ db.once('open', async () => {
 
     })
 
+    console.log('Killers seeded');
+
     await KillerAddOn.deleteMany();
 
-    await KillerAddOn.create({
+    await KillerAddOn.bulkCreate({
 
     })
+
+    console.log('Killer add-ons seeded');
 
     await KillerBuild.deleteMany();
 
-    await KillerBuild.create({
+    await KillerBuild.bulkCreate({
 
     })
-    
-    
+
+    console.log('Killer Builds seeded');
+
     await KillPerk.deleteMany();
 
-    await KillPerk.create({
+    await KillPerk.bulkCreate({
 
     })
+
+    console.log('Killer Perks seeded');
 
     await Survivor.deleteMany();
 
-    await Survivor.create({
+    await Survivor.buklkCreate({
 
     })
+
+    console.log('Survivors seeded');
 
     await SurvivorBuild.deleteMany();
 
-    await SurvivorBuild.create({
+    await SurvivorBuild.bulkCreate({
 
     })
+
+    console.log('Survivor Builds seeded');
 
     await SurvPerk.deleteMany();
 
-    await SurvPerk.create({
+    await SurvPerk.bulkCreate({
 
     })
+
+    console.log('Survivor Perks seeded');
 
     await User.deleteMany();
 
@@ -66,7 +83,7 @@ db.once('open', async () => {
         killBuilds: killBuilds
     });
 
-    console.log('seeded');
+    console.log('All seeded');
 
     process.exit();
 });
