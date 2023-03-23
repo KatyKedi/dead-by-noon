@@ -6,7 +6,7 @@ const ItemAddOnSchema = new Schema(
             type: String,
             required: true
         },
-        item: {
+        type: {
             type: Schema.Types.ObjectId,
             ref: 'Item'
         },

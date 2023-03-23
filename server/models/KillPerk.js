@@ -6,7 +6,7 @@ const KillPerkSchema = new Schema(
             type: String,
             required: true
         },
-        description: {
+        abilities: {
             type: String,
             required: true
         },

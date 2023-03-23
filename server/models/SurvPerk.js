@@ -6,13 +6,9 @@ const SurvPerkSchema = new Schema(
             type: String,
             required: true
         },
-        description: {
+        abilities: {
             type: String,
             required: true
-        },
-        survivor: {
-            type: Schema.Types.ObjectId,
-            ref: 'Survivor'
         },
         img: {
             type: String

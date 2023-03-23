@@ -9,6 +9,10 @@ const KillerBuildSchema = new Schema(
         description: {
             type: String
         },
+        createdAt: {
+            type: Date,
+            default: Date.now
+        },
         killer: {
             type: Schema.Types.ObjectId,
             ref: 'Killer'

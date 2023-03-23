@@ -6,15 +6,19 @@ const KillerSchema = new Schema(
             type: String,
             required: true
         },
-        description: {
-            type: String,
-            required: true
-        },
+        // description: {
+        //     type: String,
+        //     required: true
+        // },
         img: {
             type: String
         },
-        baseSpeed: {
-            type: Float
+        // baseSpeed: {
+        //     type: Float
+        // },
+        power: {
+            type: String,
+            required: true
         },
         perks: [
             {
@@ -22,12 +26,9 @@ const KillerSchema = new Schema(
                 ref: 'KillPerk'
             }
         ],
-        addOns: [
-            {
-                type: Schema.Types.ObjectId,
-                ref: 'KillerAddOn'
-            }
-        ]
+        link: {
+            type: String
+        }
     },
     {
         toJSON: {

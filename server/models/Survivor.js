@@ -6,10 +6,10 @@ const SurvivorSchema = new Schema(
             type: String,
             required: true
         },
-        description: {
-            type: String,
-            required: true
-        },
+        // description: {
+        //     type: String,
+        //     required: true
+        // },
         img: {
             type: String
         },
@@ -18,7 +18,10 @@ const SurvivorSchema = new Schema(
                 type: Schema.Types.ObjectId,
                 ref: 'SurvPerk'
             }
-        ]
+        ],
+        link: {
+            type: String
+        }
     },
     {
         toJSON: {

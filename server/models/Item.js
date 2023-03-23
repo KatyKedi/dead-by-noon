@@ -2,25 +2,25 @@ const { Schema, model } = require('mongoose');
 
 const ItemSchema = new Schema(
     {
-        name: {
+        title: {
             type: String,
             required: true
         },
-        type: {
-            type: String,
-            required: true
-        },
-        tier: {
-            type: String,
-            required: true
-        },
+        // type: {
+        //     type: String,
+        //     required: true
+        // },n
+        // tier: {
+        //     type: String,
+        //     required: true
+        // },
         description: {
             type: String,
             required: true
         },
-        img: {
-            type: String
-        }
+        // img: {
+        //     type: String
+        // }
     },
     {
         toJSON: {
