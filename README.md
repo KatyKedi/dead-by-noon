@@ -1,22 +1,4 @@
 # Dead By Noon
 
-## DESCRIPTION
-
-
-## TECHNOLOGIES USED
-
-* GraphQL
-* MongoDB
-* Mongoose
-* Node.js
-* Express.js
-* React
-
-## DEPLOYED APPLICATION
-
-link
-
-
-## CONTRIBUTION
-
-Katy Vincent
+## Description
+This app will allow users to create and share their favorite character builds for the game Dead By Daylight
