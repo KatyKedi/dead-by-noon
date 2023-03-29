@@ -8,6 +8,7 @@ import characters from "characters.json"
 import powers from "powers.json"
 
 const killperks = perks.filter(perk => (perk.type.includes('Killer')) && perk)
+console.log(killperks)
 const survperks = perks.filter(perk => (perk.type.includes('Survivor')) && perk)
 
 const killers = characters.filter(character => (character.type === 'killer') && character)

@@ -15,7 +15,7 @@
   "scripts": {
     "start": "node server.js",
     "watch": "nodemon server.js",
-    "seed": "node config/seeds.js"
+    "seed": "node seeds/seeds.js"
   },
   "name": "server",
   "description": "",

@@ -127,7 +127,7 @@ const typeDefs = gql`
     editSurvBuild(_id: ID!, name: String, description: String, perks: String, item: String, addOns: String): SurvivorBuild
     deleteSurvBuild(_id: ID!): SurvivorBuild
     addKillBuild(name: String!, description: String!, killer: String!, perks: String, addOns: String): KillerBuild
-    editKillBuild(_id: ID!, name: String, description: String, killer: String, perks: String, addOns: String): Item
+    editKillBuild(_id: ID!, name: String, description: String, killer: String, perks: String, addOns: String): KillerBuild
     deleteKillBuild(_id: ID!): KillerBuild
   }
 `;
