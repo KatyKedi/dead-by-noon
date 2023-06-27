@@ -1,6 +1,6 @@
 const { Schema, model } = require('mongoose');
 
-const SurvPerkSchema = new Schema(
+const KillerPerkSchema = new Schema(
     {
         name: {
             type: String,
@@ -23,6 +23,6 @@ const SurvPerkSchema = new Schema(
     }
 );
 
-const SurvPerk = model('SurvPerk', SurvPerkSchema);
+const KillerPerk = model('KillerPerk', KillerPerkSchema);
 
-module.exports = SurvPerk;
+module.exports = KillerPerk;

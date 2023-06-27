@@ -1,77 +1,29 @@
-import Mongoose from "mongoose"
-import items from "items.json"
-import itemaddons from "itemaddons.json"
-import killaddons from "poweraddons.json"
+const perks = require("./perks.json")
+const characters = require("./character.json")
+const items= require("./items.json")
+const itemaddons = require("./itemaddons.json")
+const powers = require("./powers.json")
+const poweraddons = require("./poweraddons.json")
 
-import perks from "perks.json"
-import characters from "characters.json"
-import powers from "powers.json"
+let killerperks = []
+let survivorperks = []
 
-const killperks = perks.filter(perk => (perk.type.includes('Killer')) && perk)
-console.log(killperks)
-const survperks = perks.filter(perk => (perk.type.includes('Survivor')) && perk)
-
-const killers = characters.filter(character => (character.type === 'killer') && character)
-const survivors = characters.filter(character => (character.type === 'survivor') && character)
-
-items = items.map( item => {
-    const mongoId = new Mongoose.Types.ObjectId
-    item = { ...item, _id: mongoId }
-
-    itemaddons = itemaddons.map( addon => {
-        if(addon.type === item.title ){
-            addon.type = mongoId
-        }
-        return addon
+perks.forEach(perk => {
+    perk.type.map(phrase => {
+        if (phrase.includes('Killer')) {
+            delete perk.type
+            killerperks.push(perk)
+        } else {
+            delete perk.type
+            survivorperks.push(perk)
+        } 
     })
-    return item
 })
 
-survperks = survperks.map(survperk => {
+let killers = []
+let survivors = []
 
-    const mongoId = new Mongoose.Types.ObjectId
-    survperk = { ...survperk, _id: mongoId }
-
-    survivors = survivors.map(survivor => {
-
-        survivor.perks = survivor.perks.map(perk => {
-
-            if(perk === survperk.name) {
-                perk = mongoId
-            }
-            return perk
-        })
-        return survivor
-    })
-    return survperk
-})
+characters.forEach(character => (character.type === 'killer') ? killers.push(character) : survivors.push(character))
 
 
-killperks = killperks.map(killperk => {
-
-    const mongoIdPerk = new Mongoose.Types.ObjectId
-    killperk = { ...killperk, _id: mongoIdPerk }
-
-    killers = killers.map(killer => {
-        const mongoIdKiller = new Mongoose.Types.ObjectId
-        killer = { ...killer, _id: mongoIdKiller }
-
-        killer.perks = killer.perks.map(perk => {
-            if(perk === killperk.name) {
-                perk = mongoId
-            }
-            return perk
-        })
-
-        powers.forEach(power => {
-            if (killer.name === power.killer) {
-                killer.power = power.name
-            }
-        })
-
-        return killer
-    })
-    return killperk
-})
-
-module.exports = { items, itemaddons, survivors, survperks, killers, killperks, killaddons }
+module.exports = { items, itemaddons, survivors, survivorperks, killers, killerperks, powers, poweraddons }
