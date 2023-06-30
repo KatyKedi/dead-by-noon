@@ -13,12 +13,6 @@ const SurvivorSchema = new Schema(
         img: {
             type: String
         },
-        perks: [
-            {
-                type: Schema.Types.ObjectId,
-                ref: 'SurvPerk'
-            }
-        ],
         link: {
             type: String
         }

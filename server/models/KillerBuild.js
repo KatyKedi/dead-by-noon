@@ -20,7 +20,7 @@ const KillerBuildSchema = new Schema(
         perks: [
             {
                 type: Schema.Types.ObjectId,
-                ref: 'KillPerk'
+                ref: 'KillerPerk'
             }
         ],
         addOns: [
@@ -28,7 +28,10 @@ const KillerBuildSchema = new Schema(
                 type: Schema.Types.ObjectId,
                 ref: 'KillerAddOns'
             }
-        ]
+        ],
+        video: {
+            type: String
+        }
     },
     {
         toJSON: {

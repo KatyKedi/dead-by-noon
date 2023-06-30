@@ -20,12 +20,6 @@ const KillerSchema = new Schema(
             type: String,
             required: true
         },
-        perks: [
-            {
-                type: Schema.Types.ObjectId,
-                ref: 'KillPerk'
-            }
-        ],
         link: {
             type: String
         }

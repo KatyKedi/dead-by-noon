@@ -28,7 +28,10 @@ const SurvivorBuildSchema = new Schema(
                 type: Schema.Types.ObjectId,
                 ref: 'ItemAddOn'
             }
-        ]
+        ],
+        video: {
+            type: String
+        }
     },
     {
         toJSON: {

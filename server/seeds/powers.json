@@ -1,4 +1,10 @@
 [
+  {"killer": "Wraith", "power": "Wailing Bell"},
+  {"killer": "Spirit", "power": "Phase Walk"},
+  {"killer": "Plague", "power": "Vile Purge"},
+  {"killer": "Oni", "power": "Yamaoka's Wrath"},
+  {"killer": "Nemesis", "power": "T-Virus"},
+  {"killer": "Mastermind", "power": "Virulent Bound"},
 {"killer": "Clown", "power": "The Afterpiece Tonic", "link": "/wiki/The_Afterpiece_Tonic_Add-ons"},
 {"killer": "Trapper", "power": "Bear Trap", "link": "/wiki/Bear_Trap_Add-ons"},
 {"killer": "Artist", "power": "Birds of Torment", "link": "/wiki/Birds_of_Torment_Add-ons"},

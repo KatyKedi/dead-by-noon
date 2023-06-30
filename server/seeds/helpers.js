@@ -1,7 +1,9 @@
+const { Item } = require('../models')
+
 const perks = require("./perks.json")
 const characters = require("./character.json")
-const items= require("./items.json")
-const itemaddons = require("./itemaddons.json")
+const items = require("./items.json")
+let itemaddons = require("./itemaddons.json")
 const powers = require("./powers.json")
 const poweraddons = require("./poweraddons.json")
 
@@ -16,14 +18,21 @@ perks.forEach(perk => {
         } else {
             delete perk.type
             survivorperks.push(perk)
-        } 
+        }
     })
 })
 
 let killers = []
 let survivors = []
 
-characters.forEach(character => (character.type === 'killer') ? killers.push(character) : survivors.push(character))
-
+characters.forEach(character => {
+    if (character.type === 'killer') {
+        delete character.type
+        killers.push(character)
+    } else {
+        delete character.type
+        survivors.push(character)
+    }
+})
 
 module.exports = { items, itemaddons, survivors, survivorperks, killers, killerperks, powers, poweraddons }
