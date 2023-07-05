@@ -6,21 +6,13 @@ const ItemSchema = new Schema(
             type: String,
             required: true
         },
-        // type: {
-        //     type: String,
-        //     required: true
-        // },n
-        // tier: {
-        //     type: String,
-        //     required: true
-        // },
         description: {
             type: String,
             required: true
         },
-        // img: {
-        //     type: String
-        // }
+        img: {
+            type: String
+        }
     },
     {
         toJSON: {

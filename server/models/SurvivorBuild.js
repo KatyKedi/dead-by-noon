@@ -7,7 +7,8 @@ const SurvivorBuildSchema = new Schema(
             required: true
         },
         description: {
-            type: String
+            type: String,
+            required: true
         },
         createdAt: {
             type: Date,
@@ -16,7 +17,7 @@ const SurvivorBuildSchema = new Schema(
         perks: [
             {
                 type: Schema.Types.ObjectId,
-                ref: 'SurvPerk'
+                ref: 'SurvivorPerk'
             }
         ],
         item: {

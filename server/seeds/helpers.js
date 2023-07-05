@@ -1,9 +1,7 @@
-const { Item } = require('../models')
-
 const perks = require("./perks.json")
 const characters = require("./character.json")
 const items = require("./items.json")
-let itemaddons = require("./itemaddons.json")
+const itemaddons = require("./itemaddons.json")
 const powers = require("./powers.json")
 const poweraddons = require("./poweraddons.json")
 

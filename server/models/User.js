@@ -16,8 +16,18 @@ const UserSchema = new Schema(
             required: true,
             minlength: 8
         },
-        survBuilds: [SurvivorBuild.schema],
-        killBuilds: [KillerBuild.schema]
+        survBuilds: [
+            {
+                type: Schema.Types.ObjectId,
+                ref: 'SurvivorBuild'
+            }
+        ],
+        killBuilds: [
+            {
+                type: Schema.Types.ObjectId,
+                ref: 'KillerBuild'
+            }
+        ]
     },
     {
         toJSON: {

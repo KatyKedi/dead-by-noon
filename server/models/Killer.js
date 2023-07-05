@@ -6,16 +6,9 @@ const KillerSchema = new Schema(
             type: String,
             required: true
         },
-        // description: {
-        //     type: String,
-        //     required: true
-        // },
         img: {
             type: String
         },
-        // baseSpeed: {
-        //     type: Float
-        // },
         power: {
             type: String,
             required: true

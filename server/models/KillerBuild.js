@@ -7,7 +7,8 @@ const KillerBuildSchema = new Schema(
             required: true
         },
         description: {
-            type: String
+            type: String,
+            required: true
         },
         createdAt: {
             type: Date,
